@@ -5,12 +5,15 @@ import csv
 #upload SS photo of celebrity/
 photo= 'profession.jpeg'
 
-#login Credentials
 client=boto3.client('rekognition',
-	aws_access_key_id='ASIAQUQRSLPB6DHBB57V',
-	aws_secret_access_key='wlKtDZNFZ52Mtbiw+UhYSl/kGOVNTkYfZBIBSX5S',
-	aws_session_token='FwoGZXIvYXdzEHEaDCvTAYZv36/sgfjC9SLbARUqCyk+ce3+Jl9KSuMApb4AC/XFwZcqKBqdlDaptk7CT5SXopxa2fKnUfzy3M7CjS+yAli4qKUK0Ujb0sD4JHMThcw/ErfTHt8o0huASQtS4OfWleZC/AaIQG+lUoN2L8Hb3iMOz/rt2DB2kajgPYt5J/BCHuYM0K54BRpLha5+kx/EtR9xFYojXSFgiC8oilGF1HrE+jjbeJfBTprm3EamLijz/WnOXC56bmIEUURBqvgzQXLshvl21P93JuuB/tO7J6qzhuZS/nx4fGTiA+Nx+6KcwnBEwksuLSjPstv7BTIttpLfQdXfpksCHUcPZ8szVUc9mb5bbbBPpjCTGtkQFNJnLh5VuSbYuy1fagNH')
-
+	aws_access_key_id='ASIAQUQRSLPB7KLUBHWE',
+	aws_secret_access_key='7K7V8Hl55B0saBjbb41E49kUE/tlyB2dVs0nPHqL',
+	aws_session_token='FwoGZXIvYXdzEHIaDFvFvFXx+U1gML1aySLbAewREid6L34KIPpYSguFdEydJ71a\
+		5FL4i3oJdrTD3n4I7Tc/J8Obx1QuFKR1i52J1MVcit2gN+W1tBHXEth/evAJzRQRp5xIniE8AGu4OsEifPbdiU4\
+		gbJzBLYl/ZURyTc4ANCUDWxTfpf8AdoC9qk1rgFUmep2slmXaQBIUb1XwrTRt9u+fvE9bfnAgv6pO34U+JYCphV\
+		18G7+il0ess8Y3SfmJRvpFjVELzUD0Sev7RySJM8MBSJkrdq/LUcYZgVXAFpkXxz5YVk8ZRvcKchxF5KlF1tlrK\
+		btnbSi20tv7BTItzgVNV0R++1fQfXI470cddBE8+OayylGji9CEJw7LoJ6LeeZStQq5faUV5UIU'
+)
 #read the photo with dete_faces
 with open(photo,'rb') as image:
 	response=client.detect_faces(Image={'Bytes':image.read()},Attributes=['ALL'])
@@ -21,9 +24,9 @@ obj= json.loads(response_string)
 
 #Print output in csv format
 emp = obj['FaceDetails'][0]
+
 with open('data_file.csv', 'w') as data_file:
 	csv_writer=csv.writer(data_file)
-
 	#get the key of output
 	header = emp.keys()
 
@@ -31,5 +34,4 @@ with open('data_file.csv', 'w') as data_file:
 
 	# Writing data of CSV file
 	csv_writer.writerow(emp.values())
-
 
