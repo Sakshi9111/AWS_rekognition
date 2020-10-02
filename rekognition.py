@@ -22,15 +22,15 @@ obj= json.loads(response_string)
 emp = obj['FaceDetails'][0]
 print(type(emp))
 print(emp)
-data_file = open('data_file.csv', 'w')
-csv_writer=csv.writer(data_file)
+with open('data_file.csv', 'w') as data_file:
+	csv_writer=csv.writer(data_file)
 
-#get the key of output
-header = emp.keys()
+	#get the key of output
+	header = emp.keys()
 
-csv_writer.writerow(header)
+	csv_writer.writerow(header)
 
-# Writing data of CSV file
-csv_writer.writerow(emp.values())
+	# Writing data of CSV file
+	csv_writer.writerow(emp.values())
 
-data_file.close()
+
