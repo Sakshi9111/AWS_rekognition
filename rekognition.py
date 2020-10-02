@@ -5,6 +5,7 @@ import csv
 #upload SS photo of celebrity/
 photo= 'profession.jpeg'
 
+#login Credentials
 client=boto3.client('rekognition',
 	aws_access_key_id='ASIAQUQRSLPB6DHBB57V',
 	aws_secret_access_key='wlKtDZNFZ52Mtbiw+UhYSl/kGOVNTkYfZBIBSX5S',
@@ -20,8 +21,6 @@ obj= json.loads(response_string)
 
 #Print output in csv format
 emp = obj['FaceDetails'][0]
-print(type(emp))
-print(emp)
 with open('data_file.csv', 'w') as data_file:
 	csv_writer=csv.writer(data_file)
 
